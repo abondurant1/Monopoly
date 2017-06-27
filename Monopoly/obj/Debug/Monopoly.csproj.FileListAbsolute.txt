@@ -1,0 +1,5 @@
+C:\Kata\Monopoly\Monopoly\bin\Debug\Monopoly.dll
+C:\Kata\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
+C:\Kata\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
+C:\Kata\Monopoly\Monopoly\obj\Debug\Monopoly.dll
+C:\Kata\Monopoly\Monopoly\obj\Debug\Monopoly.pdb
