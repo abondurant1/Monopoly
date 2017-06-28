@@ -28,18 +28,36 @@ namespace Monopoly
 
         public void DeterminePlayOrder()
         {
-            Random rnd = new Random();
-            foreach (Player player in players)
+            for (int i = 0; i < players.Count; i++)
             {
-                player.Turn = rnd.Next(1, players.Count);
-                //not working
-                for (int i = 0; i < players.Count; i++)
+                int[] turns = CreateTurnList();
+                int rnd = GetRandom();
+                for (int j = 0; j < turns.Length; j++)
                 {
-                    if (player != players[i] && player.Turn == players[i].Turn)
-                        player.Turn = rnd.Next(1, players.Count);
+                    if (rnd != turns[j])
+                    {
+                        players[i].Turn = rnd;
+                    }
                 }
             }
         }
+
+        public int GetRandom()
+        {
+            Random rnd = new Random();
+            return rnd.Next(0, players.Count);
+        }
+
+        public int[] CreateTurnList()
+        {
+            int[] turns = new int[players.Count];
+            for (int i = 0; i < players.Count; i++)
+            {
+                turns[i] = players[i].Turn;
+            }
+            return turns;
+        }
+
 
         public void PlayRound()
         {

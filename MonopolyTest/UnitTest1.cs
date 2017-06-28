@@ -19,12 +19,12 @@ namespace MonopolyTest
         public void NoPlayersHaveSameTurn()
         {
             g.DeterminePlayOrder();
-
+            int[] turns = new int[g.Players.Count];
             for (int i = 0; i < g.Players.Count; i++)
             {
-                for (int j = 0; j < g.Players.Count; j++)
-                    Assert.AreNotEqual(i, j);
+                turns[i] = g.Players[i].Turn;
             }
+
         }
     }
 }
