@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Monopoly
 {
@@ -8,22 +10,36 @@ namespace Monopoly
         private Board board;
         private List<Player> players;
         private int[] rounds;
-        private Random rnd = new Random();
+        private static Random rnd = new Random();
+        private String[] tokens = { "Horse", "Car", "Boot", "Wheelbarrow",
+            "Iron", "Sack of Money", "Thimble", "Top Hat" };
 
         public List<Player> Players
         {
             get { return players; }
         }
 
+        public int[] Rounds
+        {
+            get { return rounds; }
+        }
+
 
         public Game(int players, int rounds)
         {
-            board = new Board();
-            this.players = new List<Player>(players);
-            this.rounds = new int[rounds];
-            for (int i = 0; i < players; i++)
+            if (players >= 2 || players <= 8)
             {
-                this.players.Add(new Player());
+                board = new Board();
+                this.players = new List<Player>(players);
+                this.rounds = new int[rounds];
+                for (int i = 0; i < players; i++)
+                {
+                    this.players.Add(new Player());
+                }
+            }
+            else
+            {
+                Console.Out.WriteLine("This game requires 2 - 8 players");
             }
         }
 
@@ -49,13 +65,16 @@ namespace Monopoly
                     }
                 } while (found);
                 players[i].Turn = rnd;
+                players[i].Name = tokens[rnd];
             }
+            players = players.OrderBy(p => p.Turn).ToList();
         }
 
         public int GetRandom()
         {
             return rnd.Next(0, players.Count);
         }
+        
 
         public int[] CreateTurnList()
         {
@@ -67,17 +86,16 @@ namespace Monopoly
             return turns;
         }
 
-
         public void PlayRound()
         {
-
+            foreach (Player player in players)
+                PlayATurn(player);
         }
 
-        public void MovePlayer()
+        public void PlayATurn(Player p)
         {
-
+            p.Rolldice();
         }
-
 
     }
 }

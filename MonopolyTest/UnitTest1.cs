@@ -13,12 +13,12 @@ namespace MonopolyTest
         public void Setup()
         {
             g = new Game(4, 20);
+            g.DeterminePlayOrder();
         }
 
         [TestMethod]
         public void NoFourPlayersHaveSameTurn()
         {
-            g.DeterminePlayOrder();
             Boolean expected = true;
             Boolean[] actuals = new Boolean[4];
             int[] turns = new int[4] { 0, 1, 2, 3 };
@@ -36,6 +36,35 @@ namespace MonopolyTest
             {
                 Assert.AreEqual(expected, actual);
             }
+        }
+
+        [TestMethod]
+        public void PlayerMoves7SpacesFromStart()
+        {
+            int expected = 7;
+            g.Players[0].MovePlayer(7);
+            Assert.AreEqual(expected, g.Players[0].Space);
+        }
+
+        [TestMethod]
+        public void PlayerMoves6SpacesFromLocation39()
+        {
+            int expected = 5;
+            g.Players[0].Space = 39;
+            g.Players[0].MovePlayer(6);
+            Assert.AreEqual(expected, g.Players[0].Space);
+        }
+
+        [TestMethod]
+        public void PlayAllRounds()
+        {
+            int round = 0;
+            while (round < g.Rounds.Length)
+            {
+                g.PlayRound();
+                round++;
+            }
+            Assert.AreEqual(round, g.Rounds.Length);
         }
     }
 }

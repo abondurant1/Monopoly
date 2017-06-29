@@ -12,6 +12,9 @@ namespace Monopoly
         private int space;
         private int money;
         private int turn = -1;
+        private static Random rnd = new Random();
+
+
 
         public string Name
         {
@@ -36,18 +39,31 @@ namespace Monopoly
             get { return turn; }
             set { turn = value; }
         }
+
+
         public Player()
         {
             space = 0;
             money = 1500;
         }
 
-        public int Rolldice()
+        public void Rolldice()
         {
-            Random rnd = new Random();
-            int die1 = rnd.Next(1, 7);
-            int die2 = rnd.Next(1, 7);
-            return die1 + die2;
+            int total;
+            int die1 = GetRandom();
+            int die2 = GetRandom();
+            total = die1 + die2;
+            MovePlayer(total);
+        }
+
+        public int GetRandom()
+        {
+            return rnd.Next(1, 7);
+        }
+
+        public void MovePlayer(int spaces)
+        {
+            this.Space = ((this.Space + spaces) % 40);
         }
     }
 }
