@@ -11,7 +11,7 @@ namespace Monopoly
         private string name;
         private int space;
         private int money;
-        private int turn;
+        private int turn = -1;
 
         public string Name
         {

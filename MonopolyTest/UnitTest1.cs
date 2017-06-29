@@ -16,15 +16,26 @@ namespace MonopolyTest
         }
 
         [TestMethod]
-        public void NoPlayersHaveSameTurn()
+        public void NoFourPlayersHaveSameTurn()
         {
             g.DeterminePlayOrder();
-            int[] turns = new int[g.Players.Count];
-            for (int i = 0; i < g.Players.Count; i++)
+            Boolean expected = true;
+            Boolean[] actuals = new Boolean[4];
+            int[] turns = new int[4] { 0, 1, 2, 3 };
+            foreach (Player player in g.Players)
             {
-                turns[i] = g.Players[i].Turn;
+                for (int i = 0; i < turns.Length; i++)
+                {
+                    if (player.Turn == i)
+                    {
+                        actuals[i] = true;
+                    }
+                }
             }
-
+            foreach (Boolean actual in actuals)
+            {
+                Assert.AreEqual(expected, actual);
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Monopoly
         private Board board;
         private List<Player> players;
         private int[] rounds;
+        private Random rnd = new Random();
 
         public List<Player> Players
         {
@@ -32,19 +33,27 @@ namespace Monopoly
             {
                 int[] turns = CreateTurnList();
                 int rnd = GetRandom();
-                for (int j = 0; j < turns.Length; j++)
+
+                Boolean found = false;
+                do
                 {
-                    if (rnd != turns[j])
+                    found = false;
+                    for (int j = 0; j < turns.Length; j++)
                     {
-                        players[i].Turn = rnd;
+                        if (rnd == turns[j])
+                        {
+                            found = true;
+                            rnd = GetRandom();
+                            break;
+                        }
                     }
-                }
+                } while (found);
+                players[i].Turn = rnd;
             }
         }
 
         public int GetRandom()
         {
-            Random rnd = new Random();
             return rnd.Next(0, players.Count);
         }
 
