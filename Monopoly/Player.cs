@@ -13,7 +13,7 @@ namespace Monopoly
         private int money;
         private int turn = -1;
         private static Random rnd = new Random();
-
+        
 
 
         public string Name
@@ -58,12 +58,13 @@ namespace Monopoly
 
         public int GetRandom()
         {
-            return rnd.Next(1, 7);
+            return rnd.Next(1, 6);
         }
 
         public void MovePlayer(int spaces)
         {
             this.Space = ((this.Space + spaces) % 40);
         }
+        
     }
 }

@@ -30,6 +30,7 @@ namespace Monopoly
             if (players >= 2 || players <= 8)
             {
                 board = new Board();
+                board.PopulateBoard();
                 this.players = new List<Player>(players);
                 this.rounds = new int[rounds];
                 for (int i = 0; i < players; i++)
@@ -96,6 +97,8 @@ namespace Monopoly
         {
             p.Rolldice();
         }
+
+
 
     }
 }
