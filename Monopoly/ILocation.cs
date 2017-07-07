@@ -8,6 +8,8 @@ namespace Monopoly
 {
     public interface ILocation
     {
+        void GetName();
+
 
     }
 }
