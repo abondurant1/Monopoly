@@ -9,7 +9,9 @@ namespace Monopoly
     {
         private Board board;
         private List<Player> players;
-        private int[] rounds;
+        private int round;
+        private int totalRounds;
+        private Rules rules;
         private static Random rnd = new Random();
         private String[] tokens = { "Horse", "Car", "Boot", "Wheelbarrow",
             "Iron", "Sack of Money", "Thimble", "Top Hat" };
@@ -19,9 +21,20 @@ namespace Monopoly
             get { return players; }
         }
 
-        public int[] Rounds
+        public int Round
         {
-            get { return rounds; }
+            get { return round; }
+            set { round = value; }
+        }
+
+        public int TotalRounds
+        {
+            get { return totalRounds; }
+        }
+
+        public Board Board
+        {
+            get { return board; }
         }
 
 
@@ -31,8 +44,10 @@ namespace Monopoly
             {
                 board = new Board();
                 board.PopulateBoard();
+                rules = new Rules();
                 this.players = new List<Player>(players);
-                this.rounds = new int[rounds];
+                this.round = 0;
+                this.totalRounds = rounds;
                 for (int i = 0; i < players; i++)
                 {
                     this.players.Add(new Player());
@@ -75,7 +90,7 @@ namespace Monopoly
         {
             return rnd.Next(0, players.Count);
         }
-        
+
 
         public int[] CreateTurnList()
         {
@@ -91,14 +106,21 @@ namespace Monopoly
         {
             foreach (Player player in players)
                 PlayATurn(player);
+
+            this.round++;
         }
 
         public void PlayATurn(Player p)
         {
-            p.Rolldice();
+            int travel = p.Rolldice();
+            p.MovePlayer(travel);
+            PerformSpaceAction(p, p.Space);
         }
 
-
+        public void PerformSpaceAction(Player p, int space)
+        {
+            rules.PlayRule(p, space);
+        }
 
     }
 }

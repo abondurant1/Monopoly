@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monopoly
 {
-    public interface ILocation
+    class Round
     {
-        String Name { get;}
-
-        int Space { get;}
-
     }
 }

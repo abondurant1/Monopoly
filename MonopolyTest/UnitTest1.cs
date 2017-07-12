@@ -59,12 +59,92 @@ namespace MonopolyTest
         public void PlayAllRounds()
         {
             int round = 0;
-            while (round < g.Rounds.Length)
+            while (round < g.TotalRounds)
             {
                 g.PlayRound();
                 round++;
             }
-            Assert.AreEqual(round, g.Rounds.Length);
+            Assert.AreEqual(round, g.TotalRounds);
+        }
+
+        [TestMethod]
+        public void PlayerPassesGo()
+        {
+            g.Round = 5;
+            g.Players[0].Money = 1000;
+            g.Players[0].Space = 35;
+            g.Players[0].MovePlayer(10);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(1200, g.Players[0].Money);
+        }
+
+        [TestMethod]
+        public void PlayerLandsOnGo()
+        {
+            g.Round = 5;
+            g.Players[0].Money = 1000;
+            g.Players[0].Space = 35;
+            g.Players[0].MovePlayer(5);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(1200, g.Players[0].Money);
+        }
+
+        [TestMethod]
+        public void PlayerLandsOnGoToJail()
+        {
+            g.Players[0].Space = 25;
+            g.Players[0].MovePlayer(5);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(10, g.Players[0].Space);
+        }
+
+        [TestMethod]
+        public void PlayerLandsOnIncomeTaxWith1800Cash()
+        {
+            g.Players[0].Money = 1800;
+            g.Players[0].Space = 0;
+            g.Players[0].MovePlayer(4);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(1620, g.Players[0].Money);
+        }
+        [TestMethod]
+        public void PlayerLandsOnIncomeTaxWith2200Cash()
+        {
+            g.Players[0].Money = 2200;
+            g.Players[0].Space = 0;
+            g.Players[0].MovePlayer(4);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(2000, g.Players[0].Money);
+        }
+
+        [TestMethod]
+        public void PlayerLandsOnIncomeTaxWith0Cash()
+        {
+            g.Players[0].Money = 0;
+            g.Players[0].Space = 0;
+            g.Players[0].MovePlayer(4);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(0, g.Players[0].Money);
+        }
+
+        [TestMethod]
+        public void PlayerLandsOnIncomeTaxWith2000Cash()
+        {
+            g.Players[0].Money = 2000;
+            g.Players[0].Space = 0;
+            g.Players[0].MovePlayer(4);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(1800, g.Players[0].Money);
+        }
+
+        [TestMethod]
+        public void PlayerLandsOnLuxuryTaxWith2000Cash()
+        {
+            g.Players[0].Money = 2000;
+            g.Players[0].Space = 30;
+            g.Players[0].MovePlayer(8);
+            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
+            Assert.AreEqual(1925, g.Players[0].Money);
         }
     }
 }

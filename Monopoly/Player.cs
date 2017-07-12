@@ -13,7 +13,8 @@ namespace Monopoly
         private int money;
         private int turn = -1;
         private static Random rnd = new Random();
-        
+
+
 
 
         public string Name
@@ -47,13 +48,13 @@ namespace Monopoly
             money = 1500;
         }
 
-        public void Rolldice()
+        public int Rolldice()
         {
             int total;
             int die1 = GetRandom();
             int die2 = GetRandom();
             total = die1 + die2;
-            MovePlayer(total);
+            return total;
         }
 
         public int GetRandom()
@@ -63,8 +64,11 @@ namespace Monopoly
 
         public void MovePlayer(int spaces)
         {
+            int previousSpace = this.space;
             this.Space = ((this.Space + spaces) % 40);
+            //passing Go logic here
+            if (previousSpace > this.space && this.space != 0)
+                this.money += 200;
         }
-        
     }
 }

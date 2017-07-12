@@ -8,55 +8,55 @@ namespace Monopoly
 {
     public class Board
     {
-        private List<Location> spaces;
+        private List<ILocation> spaces;
 
         public Board()
         {
-            this.spaces = new List<Location>(40);
+            this.spaces = new List<ILocation>(40);
         }
 
         public void PopulateBoard()
         {
-            spaces.Insert(0, new Location(0, "Go", 0));
-            spaces.Insert(1, new Location(1, "Mediterranean Avenue", 60));
-            spaces.Insert(2, new Location(2, "Community Chest", 0));
-            spaces.Insert(3, new Location(3, "Baltic Avenue", 60));
-            spaces.Insert(4, new Location(4, "Income Tax", 200));
-            spaces.Insert(5, new Location(5, "Reading Railroad", 200));
-            spaces.Insert(6, new Location(6, "Oriental Avenue", 100));
-            spaces.Insert(7, new Location(7, "Chance", 0));
-            spaces.Insert(8, new Location(8, "Vermont Avenue", 100));
-            spaces.Insert(9, new Location(9, "Connecticut Avenue", 100));
-            spaces.Insert(10, new Location(10, "In Jail / Just Visiting", 0));
-            spaces.Insert(11, new Location(11, "St. Charles Place", 60));
-            spaces.Insert(12, new Location(12, "Electric Company", 150));
-            spaces.Insert(13, new Location(13, "States Avenue", 140));
-            spaces.Insert(14, new Location(14, "Virginia Avenue", 160));
-            spaces.Insert(15, new Location(15, "Pennsylvania Railroad", 200));
-            spaces.Insert(16, new Location(16, "St. James Place", 180));
-            spaces.Insert(17, new Location(17, "Community Chest", 0));
-            spaces.Insert(18, new Location(18, "Tennesse Avenue", 180));
-            spaces.Insert(19, new Location(19, "New York Avenue", 200));
-            spaces.Insert(20, new Location(20, "Free Parking", 0));
-            spaces.Insert(21, new Location(21, "Kentucky Avenue", 220));
-            spaces.Insert(22, new Location(22, "Chance", 0));
-            spaces.Insert(23, new Location(23, "Indiana Avenue", 220));
-            spaces.Insert(24, new Location(24, "Illinois Avenue", 240));
-            spaces.Insert(25, new Location(25, "B. & O. Railroad", 200));
-            spaces.Insert(26, new Location(26, "Atlantic Avenue", 260));
-            spaces.Insert(27, new Location(27, "Ventnor Avenue", 260));
-            spaces.Insert(28, new Location(28, "Water Works", 150));
-            spaces.Insert(29, new Location(29, "Marvin Gardens", 280));
-            spaces.Insert(30, new Location(30, "Go To Jail", 0));
-            spaces.Insert(31, new Location(31, "Pacific Avenue", 300));
-            spaces.Insert(32, new Location(32, "North Carolina Avenue", 300));
-            spaces.Insert(33, new Location(33, "Community Chest", 0));
-            spaces.Insert(34, new Location(34, "Pennsylvania Avenue", 320));
-            spaces.Insert(35, new Location(35, "Short Line", 200));
-            spaces.Insert(36, new Location(36, "Chance", 0));
-            spaces.Insert(37, new Location(37, "Park Place", 350));
-            spaces.Insert(38, new Location(38, "Luxury Tax", 100));
-            spaces.Insert(39, new Location(39, "BoardWalk", 400));
+            spaces.Insert(0, new Go(0, "Go"));
+            spaces.Insert(1, new Property(1, "Mediterranean Avenue", 60, "Brown"));
+            spaces.Insert(2, new CommunityChance(2, "Community Chest", "Community Chest"));
+            spaces.Insert(3, new Property(3, "Baltic Avenue", 60, "Brown"));
+            spaces.Insert(4, new Tax(4, "Income Tax", 200));
+            spaces.Insert(5, new Railroad(5, "Reading Railroad", 200));
+            spaces.Insert(6, new Property(6, "Oriental Avenue", 100, "Light Blue"));
+            spaces.Insert(7, new CommunityChance(7, "Chance", "Chance"));
+            spaces.Insert(8, new Property(8, "Vermont Avenue", 100, "Light Blue"));
+            spaces.Insert(9, new Property(9, "Connecticut Avenue", 100, "Light Blue"));
+            spaces.Insert(10, new JailOrJustVisiting(10, "In Jail / Just Visiting"));
+            spaces.Insert(11, new Property(11, "St. Charles Place", 60, "Purple"));
+            spaces.Insert(12, new Company(12, "Electric Company", 150));
+            spaces.Insert(13, new Property(13, "States Avenue", 140, "Purple"));
+            spaces.Insert(14, new Property(14, "Virginia Avenue", 160, "Purple"));
+            spaces.Insert(15, new Railroad(15, "Pennsylvania Railroad", 200));
+            spaces.Insert(16, new Property(16, "St. James Place", 180, "Orange"));
+            spaces.Insert(17, new CommunityChance(17, "Community Chest", "Community Chest"));
+            spaces.Insert(18, new Property(18, "Tennesse Avenue", 180, "Orange"));
+            spaces.Insert(19, new Property(19, "New York Avenue", 200, "Orange"));
+            spaces.Insert(20, new FreeParking(20, "Free Parking"));
+            spaces.Insert(21, new Property(21, "Kentucky Avenue", 220, "Red"));
+            spaces.Insert(22, new CommunityChance(22, "Chance", "Chance"));
+            spaces.Insert(23, new Property(23, "Indiana Avenue", 220, "Red"));
+            spaces.Insert(24, new Property(24, "Illinois Avenue", 240, "Red"));
+            spaces.Insert(25, new Railroad(25, "B. & O. Railroad", 200));
+            spaces.Insert(26, new Property(26, "Atlantic Avenue", 260, "Yellow"));
+            spaces.Insert(27, new Property(27, "Ventnor Avenue", 260, "Yellow"));
+            spaces.Insert(28, new Company(28, "Water Works", 150));
+            spaces.Insert(29, new Property(29, "Marvin Gardens", 280, "Yellow"));
+            spaces.Insert(30, new GoToJail(30, "Go To Jail"));
+            spaces.Insert(31, new Property(31, "Pacific Avenue", 300, "Green"));
+            spaces.Insert(32, new Property(32, "North Carolina Avenue", 300, "Green"));
+            spaces.Insert(33, new CommunityChance(33, "Community Chest", "Community Chest"));
+            spaces.Insert(34, new Property(34, "Pennsylvania Avenue", 320, "Green"));
+            spaces.Insert(35, new Railroad(35, "Short Line", 200));
+            spaces.Insert(36, new CommunityChance(36, "Chance", "Chance"));
+            spaces.Insert(37, new Property(37, "Park Place", 350, "Dark Blue"));
+            spaces.Insert(38, new Tax(38, "Luxury Tax", 100));
+            spaces.Insert(39, new Property(39, "BoardWalk", 400, "Dark Blue"));
         }
     }
 }
