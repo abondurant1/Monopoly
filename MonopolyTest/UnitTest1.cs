@@ -74,7 +74,6 @@ namespace MonopolyTest
             g.Players[0].Money = 1000;
             g.Players[0].Space = 35;
             g.Players[0].MovePlayer(10);
-            g.PerformSpaceAction(g.Players[0], g.Players[0].Space);
             Assert.AreEqual(1200, g.Players[0].Money);
         }
 

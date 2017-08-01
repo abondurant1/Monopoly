@@ -10,6 +10,11 @@ namespace Monopoly
     {
         private List<ILocation> spaces;
 
+        public List<ILocation> Spaces
+        {
+            get { return spaces; }
+        }
+
         public Board()
         {
             this.spaces = new List<ILocation>(40);
@@ -55,7 +60,7 @@ namespace Monopoly
             spaces.Insert(35, new Railroad(35, "Short Line", 200));
             spaces.Insert(36, new CommunityChance(36, "Chance", "Chance"));
             spaces.Insert(37, new Property(37, "Park Place", 350, "Dark Blue"));
-            spaces.Insert(38, new Tax(38, "Luxury Tax", 100));
+            spaces.Insert(38, new Tax(38, "Luxury Tax", 75));
             spaces.Insert(39, new Property(39, "BoardWalk", 400, "Dark Blue"));
         }
     }

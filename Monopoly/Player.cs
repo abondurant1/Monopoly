@@ -13,10 +13,8 @@ namespace Monopoly
         private int money;
         private int turn = -1;
         private static Random rnd = new Random();
-
-
-
-
+        private List<ILocation> properties;
+        
         public string Name
         {
             get { return name; }
@@ -41,11 +39,17 @@ namespace Monopoly
             set { turn = value; }
         }
 
+        public List<ILocation> Properties
+        {
+            get { return properties; }
+        }
+
 
         public Player()
         {
             space = 0;
             money = 1500;
+            properties = new List<ILocation>();
         }
 
         public int Rolldice()

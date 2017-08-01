@@ -17,5 +17,10 @@ namespace Monopoly
             this.Space = space;
             this.Name = name;
         }
+
+        public void LandOn(Player player)
+        {
+            player.Space = 10;
+        }
     }
 }

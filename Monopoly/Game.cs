@@ -117,9 +117,10 @@ namespace Monopoly
             PerformSpaceAction(p, p.Space);
         }
 
-        public void PerformSpaceAction(Player p, int space)
+        public void PerformSpaceAction(Player player, int space)
         {
-            rules.PlayRule(p, space);
+            //rules.PlayRule(player, space);
+            Board.Spaces[space].LandOn(player);
         }
 
     }

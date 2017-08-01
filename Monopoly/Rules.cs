@@ -43,12 +43,12 @@ namespace Monopoly
             p.Space = 10;
         }
 
-        public void IncomeTax(Player p)
+        public void IncomeTax(Player player)
         {
-            if (p.Money > 2000)
-                p.Money -= 200;
+            if (player.Money > 2000)
+                player.Money -= 200;
             else
-                p.Money -= (Convert.ToInt32(p.Money * 0.1));
+                player.Money -= (Convert.ToInt32(player.Money * 0.1));
         }
 
         public void LuxuryTax(Player p)

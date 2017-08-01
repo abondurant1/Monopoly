@@ -20,5 +20,10 @@ namespace Monopoly
             this.Name = name;
             this.Price = price;
         }
+
+        public void LandOn(Player player)
+        {
+            player.Money -= Price;
+        }
     }
 }

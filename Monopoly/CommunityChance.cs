@@ -20,5 +20,10 @@ namespace Monopoly
             this.Name = name;
             this.Type = Type;
         }
+
+        public void LandOn(Player player)
+        {
+            
+        }
     }
 }

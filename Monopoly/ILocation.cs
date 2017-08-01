@@ -9,8 +9,8 @@ namespace Monopoly
     public interface ILocation
     {
         String Name { get;}
-
         int Space { get;}
+        void LandOn(Player player); 
 
     }
 }
